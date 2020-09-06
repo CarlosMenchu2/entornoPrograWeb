@@ -54,7 +54,7 @@ function reloadTask(d) {
 }
 
 /* Minidicar los archivos css */
-function minifycss(d) {
+function minifycssTask(d) {
     return src(files.cssPath)
         .pipe(concat('appcss.css'))
         .pipe(minifycss())
@@ -62,7 +62,7 @@ function minifycss(d) {
 }
 
 /* Minificar los archivos js */
-function minifyjs(d) {
+function minifyjsTask(d) {
     return src(files.jsPath)
         .pipe(concat('appjs.js'))
         .pipe(uglify())
@@ -70,4 +70,4 @@ function minifyjs(d) {
 }
 
 
-exports.default = series(scssTask,minifycss,minifyjs, serveTask, watchTask);
+exports.default = series(scssTask,minifycssTask,minifyjsTask, serveTask, watchTask);
